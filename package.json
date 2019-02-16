@@ -4,7 +4,7 @@
   "description": "A node with react project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "nodemon ./server.js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +17,13 @@
     "JAVASCRIPT"
   ],
   "author": "Thierno Sadou Diallo",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/thierved/node_react_app/issues"
   },
-  "homepage": "https://github.com/thierved/node_react_app#readme"
+  "homepage": "https://github.com/thierved/node_react_app#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  }
 }
