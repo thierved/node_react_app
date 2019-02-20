@@ -1,25 +1,20 @@
 const Post = require('../models/post');
 
 exports.getPost = (req, res) => {
-    res.json({
-        posts: [
-            {title: "Node is awesome"},
-            {title: "React is cool."}
-        ]
-    });
+    const post = Post.find()
+    .select("_id title body")
+    .then(posts => {
+        res.json({posts})
+    })
+    .catch(error => console.log(error));
 }
 
 exports.createPost = (req, res) => {
     post = new Post(req.body);
     
-    post.save((err, result) => {
-        if (err) {
-            return res.status(400).json({
-                error: err
-            });
-        }
-        res.status(200).json({
+    post.save().then(result => {
+        res.json({
             post: result
-        });
+        })
     });
 }
