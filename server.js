@@ -8,7 +8,8 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 
 
-const getPost = require('./routes/post');
+const postRouter = require('./routes/post');
+const authRouter = require('./routes/auth');
 
 dotenv.config();
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }).then(() => {
@@ -21,7 +22,8 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 app.use(expressValidator());
 
-app.use('/', getPost);
+app.use('/', postRouter);
+app.use('/', authRouter);
 
 const port = process.env.PORT || 3000;
 
